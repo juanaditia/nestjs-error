@@ -12,11 +12,11 @@ export class FileKita {
   description: string;
 
   @Column()
+  isPublished: boolean;
+
+  @Column()
   filename: string;
 
   @Column('int')
   views: number;
-
-  @Column()
-  isPublished: boolean;
 }

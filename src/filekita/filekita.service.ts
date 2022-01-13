@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { FileKita } from './filekita.entity'
+import { FileKitaDTO } from './filekita.dto';
 
 @Injectable()
 export class FilekitaService {
@@ -10,9 +11,7 @@ export class FilekitaService {
   
   private filekitaRepository : Repository< FileKita >
 
-  ){
-
-  }
+  ){  }
 
   async showAll () {
     return await this.filekitaRepository.find()
@@ -22,6 +21,12 @@ export class FilekitaService {
 
     return " ini di service ";
 
+  }
+
+  async create(data: FileKitaDTO){
+    const fileKitaNew = await this.filekitaRepository.create(data);
+    await this.filekitaRepository.save(fileKitaNew)
+    return fileKitaNew
   }
 
 }
