@@ -29,4 +29,10 @@ export class FilekitaService {
     return fileKitaNew
   }
 
+  async showPreRecord(id: string){
+    return await this.filekitaRepository.findOne({
+      where : {id}
+    })
+  }
+
 }

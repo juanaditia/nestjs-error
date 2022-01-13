@@ -7,27 +7,32 @@ export class FilekitaController {
   constructor(private FilekitaService:FilekitaService){}
 
 
+  // show all data table (record table)
+
   @Get()
-  lihatOutput(): string{
-    return ' ini controller file kita ';
+  lihatOutput() {
+    return this.FilekitaService.showAll();
   }
 
-  // delete the ("//") for turn on get by id
+  // Show data table by id
 
-  // @Get(':id')
-  // lihatDetail(@Param('id') id: string ): string{
-  //   return ' ini controller file kita by id : ' + id;
-  // }
+  @Get(':id')
+  lihatDetail(@Param('id') id: string ) {
+    // return ' ini controller file kita by id : ' + id;
+    return this.FilekitaService.showPreRecord(id)
+  }
 
   @Get('service')
   lihatSemua(){
     return this.FilekitaService.lihatSemua();
   }
 
-  @Get('table')
-  showTable(){
-    return this.FilekitaService.showAll();
-  }
+  // to show how works with show all data table
+
+  // @Get('table')
+  // showTable(){
+  //   return this.FilekitaService.showAll();
+  // }
 
   @Post()
   membuatRecord(@Body() data: FileKitaDTO){
