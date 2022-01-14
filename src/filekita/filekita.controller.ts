@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { FilekitaService } from './filekita.service';
 import { FileKitaDTO } from './filekita.dto';
 
@@ -34,9 +34,23 @@ export class FilekitaController {
   //   return this.FilekitaService.showAll();
   // }
 
+  // add data table
+
   @Post()
   membuatRecord(@Body() data: FileKitaDTO){
     return this.FilekitaService.create(data)
+  }
+
+  // update data table
+
+  @Put(':id')
+  updateDetail(@Param('id') id: string, @Body() data: Partial<FileKitaDTO>){
+    return this.FilekitaService.update(id,data)
+  }
+
+  @Delete(':id')
+  deleteRecord(@Param('id') id: string){
+    return this.FilekitaService.deleteData(id);
   }
 
 }

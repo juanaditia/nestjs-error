@@ -35,4 +35,17 @@ export class FilekitaService {
     })
   }
 
+  async update(id: string, data: Partial<FileKitaDTO> ){
+
+    await this.filekitaRepository.update({id},data)
+    return await this.filekitaRepository.findOne({
+      where : {id}
+    })
+  }
+
+  async deleteData(id: string){
+    await this.filekitaRepository.delete({id})
+    return {deleted: true}
+  } 
+
 }
