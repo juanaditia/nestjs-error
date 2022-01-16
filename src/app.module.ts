@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FilekitaModule } from './filekita/filekita.module';
+import { APP_FILTER } from '@nestjs/core';
+import { HttpErrorFilter } from './Shared/http-error.filter'
 
 
 @Module({
@@ -22,6 +24,10 @@ import { FilekitaModule } from './filekita/filekita.module';
     FilekitaModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, {
+    provide: APP_FILTER,
+    useClass: HttpErrorFilter
+  }
+  ],
 })
 export class AppModule {}
