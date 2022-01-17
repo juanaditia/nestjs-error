@@ -8,7 +8,9 @@ import { join } from 'path';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot({}),
+    GraphQLModule.forRoot({
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DB_HOST,

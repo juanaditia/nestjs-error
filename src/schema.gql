@@ -1,0 +1,16 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type FileKita {
+  id: ID!
+  name: String!
+  description: String!
+  isPublished: Boolean!
+  filename: String!
+  views: Int!
+}
+
+type Query {
+  filekita: [FileKita!]!
+}
