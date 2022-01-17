@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { FileKita } from './filekita.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { FileKita } from './entities/filekita.entity';
 import { FilekitaController } from './filekita.controller';
 import { FilekitaService } from './filekita.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([FileKita])],
   controllers: [FilekitaController],
-  providers: [FilekitaService]
+  providers: [FilekitaService],
 })
 export class FilekitaModule {}
